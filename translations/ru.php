@@ -49,14 +49,6 @@ $_MODULE['<{universalpay}prestashop>adminunipaysystem_bf79e869d311183f27ddcf679a
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_8783bc7ae2b9e8d93a2bc15150aaefa8'] = 'Группы';
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_9ba5fe29e0040bbc6593091557681cf4'] = 'Группы покупателей для которых активна платежная система';
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_9d55fc80bbb875322aa67fd22fc98469'] = 'Привязка к магазину';
-$_MODULE['<{universalpay}prestashop>validation_e2b7dec8fa4b498156dfee6e4c84b156'] = 'Этот способ оплаты недоступен';
-$_MODULE['<{universalpay}prestashop>payment_execution_f1d3b424cd68795ecaa552883759aceb'] = 'Описание заказа';
-$_MODULE['<{universalpay}prestashop>payment_execution_879f6b8877752685a966564d072f498f'] = 'Ваша корзина пуста.';
-$_MODULE['<{universalpay}prestashop>payment_execution_0b5320ab8d574d4abadab68bdec15af9'] = 'Подтвердите заказ нажатием \"Я подтверждаю мой заказ\"';
-$_MODULE['<{universalpay}prestashop>payment_execution_569fd05bdafa1712c4f6be5b153b8418'] = 'Другие способы оплаты';
-$_MODULE['<{universalpay}prestashop>payment_execution_46b9e3665f187c739c55983f757ccda0'] = 'Подтверждаю заказ';
 $_MODULE['<{universalpay}prestashop>displayadminordercontentorder_49ee3087348e8d44e1feda1917443987'] = 'Имя';
 $_MODULE['<{universalpay}prestashop>displayadminordercontentorder_689202409e48743b914713f96d93947c'] = 'Значение';
 $_MODULE['<{universalpay}prestashop>displayadminordertaborder_5875aa773e575b68fc4757553b048a72'] = 'Универсальный платеж';
-$_MODULE['<{universalpay}prestashop>payment_0b5320ab8d574d4abadab68bdec15af9'] = 'Подтвердите заказ нажатием \"Я подтверждаю мой заказ\"';
-$_MODULE['<{universalpay}prestashop>payment_46b9e3665f187c739c55983f757ccda0'] = 'Подтверждаю заказ';

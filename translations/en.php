@@ -45,10 +45,3 @@ $_MODULE['<{universalpay}prestashop>adminunipaysystem_14c5920c988429689db102b62f
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_8783bc7ae2b9e8d93a2bc15150aaefa8'] = 'The carriers in which this paysystem is to be used';
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_9ba5fe29e0040bbc6593091557681cf4'] = 'The customer groups in which this paysystem is to be used';
 $_MODULE['<{universalpay}prestashop>adminunipaysystem_c9cc8cce247e49bae79f15173ce97354'] = 'Save';
-$_MODULE['<{universalpay}prestashop>validation_e2b7dec8fa4b498156dfee6e4c84b156'] = 'This payment method is not available.';
-$_MODULE['<{universalpay}prestashop>payment_execution_f1d3b424cd68795ecaa552883759aceb'] = 'Order summary';
-$_MODULE['<{universalpay}prestashop>payment_execution_0b5320ab8d574d4abadab68bdec15af9'] = 'Please confirm your order by clicking \"I confirm my order\"';
-$_MODULE['<{universalpay}prestashop>payment_execution_569fd05bdafa1712c4f6be5b153b8418'] = 'Other payment methods';
-$_MODULE['<{universalpay}prestashop>payment_execution_46b9e3665f187c739c55983f757ccda0'] = 'I confirm my order';
-$_MODULE['<{universalpay}prestashop>payment_0b5320ab8d574d4abadab68bdec15af9'] = 'Please confirm your order by clicking \"I confirm my order\"';
-$_MODULE['<{universalpay}prestashop>payment_46b9e3665f187c739c55983f757ccda0'] = 'I confirm my order';

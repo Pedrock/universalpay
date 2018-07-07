@@ -36,17 +36,9 @@ $_MODULE['<{universalpay}prestashop>universalpay_a599c92bfe99c30fe14bee3a9ec9025
 $_MODULE['<{universalpay}prestashop>universalpay_1e942b304ac381c702b1e20c42a448ef'] = 'Touche de confirmation dans la liste des méthodes de paiement';
 $_MODULE['<{universalpay}prestashop>universalpay_00d23a76e43b46dae9ec7aa9dcbebb32'] = 'Activé';
 $_MODULE['<{universalpay}prestashop>universalpay_b9f5c797ebbf55adccdd8539a65a0241'] = 'Désactivé';
-$_MODULE['<{universalpay}prestashop>validation_e2b7dec8fa4b498156dfee6e4c84b156'] = 'Ce mode de paiement ne sont pas disponibles';
 $_MODULE['<{universalpay}prestashop>form_a82be0f551b8708bc08eb33cd9ded0cf'] = 'Information';
 $_MODULE['<{universalpay}prestashop>form_34b6cd75171affba6957e308dcbd92be'] = 'Version';
 $_MODULE['<{universalpay}prestashop>form_794df3791a8c800841516007427a2aa3'] = 'Licence';
 $_MODULE['<{universalpay}prestashop>form_672caf27f5363dc833bda5099775e891'] = 'Developer';
 $_MODULE['<{universalpay}prestashop>form_b5a7adde1af5c87d7fd797b6245c2a39'] = 'Description';
 $_MODULE['<{universalpay}prestashop>form_764a18c1d364a1eb563785d57137a945'] = 'Modules et templates pour PrestaShop';
-$_MODULE['<{universalpay}prestashop>payment_execution_f1d3b424cd68795ecaa552883759aceb'] = 'Résumé de la commande';
-$_MODULE['<{universalpay}prestashop>payment_execution_879f6b8877752685a966564d072f498f'] = 'Panier.';
-$_MODULE['<{universalpay}prestashop>payment_execution_0881a11f7af33bc1b43e437391129d66'] = 'Afin de confirmation en cliquant sur \'Je confirme ma commande\'';
-$_MODULE['<{universalpay}prestashop>payment_execution_46b9e3665f187c739c55983f757ccda0'] = 'Je confirme ma commande';
-$_MODULE['<{universalpay}prestashop>payment_execution_569fd05bdafa1712c4f6be5b153b8418'] = 'Autres méthodes de paiement';
-$_MODULE['<{universalpay}prestashop>payment_0881a11f7af33bc1b43e437391129d66'] = 'S`il vous plaît confirmer votre commande en cliquant sur \'Je confirme ma commande\'';
-$_MODULE['<{universalpay}prestashop>payment_46b9e3665f187c739c55983f757ccda0'] = 'Je confirme ma commande';

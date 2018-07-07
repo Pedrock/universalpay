@@ -27,9 +27,8 @@ class UniversalpayValidationModuleFrontController extends ModuleFrontController
                 break;
             }
         }
-
         if (!$authorized) {
-            die($this->module->l('This payment method is not available.', 'validation'));
+            Tools::redirect('index.php?controller=order&step=1');
         }
 
         $customer = new Customer($cart->id_customer);
@@ -41,7 +40,21 @@ class UniversalpayValidationModuleFrontController extends ModuleFrontController
         require_once(dirname(__FILE__) . '/../../classes/UniPaySystem.php');
         $paysistem = new UniPaySystem((int)Tools::getValue('id_universalpay_system'), $this->context->cookie->id_lang);
         if (!Validate::isLoadedObject($paysistem)) {
-            return;
+            Tools::redirect('index.php?controller=order&step=1');
+        }
+
+        // Check if pay system is valid for the selected carrier
+        $paySystems = UniPaySystem::getPaySystems($this->context->language->id, true, $cart->id_carrier, $customer->getGroups());
+        $paySystemIsValid = false;
+        foreach ($paySystems as $paySystem) {
+            if ((int)$paySystem['id_universalpay_system'] === $paysistem->id) {
+                $paySystemIsValid = true;
+                break;
+            }
+        }
+        if (!$paySystemIsValid) {
+            die();
+            Tools::redirect('index.php?controller=order&step=1');
         }
 
         if ($paysistem->id_cart_rule) {
@@ -81,22 +94,9 @@ class UniversalpayValidationModuleFrontController extends ModuleFrontController
             $order->setUpFields($up_fields);
             $order->save();
         }
+        
         Tools::redirect('index.php?controller=order-confirmation&id_cart=' . (int)$cart->id .
             '&id_module=' . (int)$this->module->id . '&id_order=' . $this->module->currentOrder .
             '&key=' . $customer->secure_key . '&id_universalpay_system=' . $paysistem->id);
-    }
-
-    public function setTemplate($default_template)
-    {
-        if ($this->context->getMobileDevice() != false) {
-            $this->setMobileTemplate($default_template);
-        } else {
-            $template = $this->getOverrideTemplate();
-            if ($template) {
-                $this->template = $template;
-            } else {
-                $this->template = $default_template;
-            }
-        }
     }
 }

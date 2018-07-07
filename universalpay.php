@@ -84,8 +84,8 @@ class Universalpay extends PaymentModule
         && $this->registerHook('displayOrderDetail')
         && $this->registerHook('displayAdminOrderContentOrder')
         && $this->registerHook('displayAdminOrderTabOrder')
-        && $this->registerHook('displayPaymentReturn')
-        && $this->registerHook('PaymentOptions')
+        && $this->registerHook('paymentReturn')
+        && $this->registerHook('paymentOptions')
         && mkdir(_PS_IMG_DIR_ . 'pay')
         && self::installModuleTab('AdminUniPaySystem',
             array('ru' => 'Платежные системы', 'default' => 'Pay Systems', 'it' => 'Metodi di pagamento'),
@@ -165,8 +165,11 @@ class Universalpay extends PaymentModule
         return true;
     }
 
-    public function hookdisplayPaymentReturn($params)
+    public function hookPaymentReturn($params)
     {
+        if (!$this->active) {
+            return;
+        }
         require_once(dirname(__FILE__) . '/classes/UniPaySystem.php');
         $paysistem = new UniPaySystem((int)Tools::getValue('id_universalpay_system'), $this->context->cookie->id_lang);
         $description_success = str_replace(array('%total%', '%order_number%', '%order_id%'),
@@ -183,7 +186,7 @@ class Universalpay extends PaymentModule
         foreach ($fields as $key => $field)
             $description_success = str_replace('%up_'.$key.'%', $field, $description_success);
 
-        return '<div class="box">' . $description_success . '</div>';
+        return $description_success;
     }
 
     public function hookdisplayAdminOrderTabOrder($params)
@@ -225,33 +228,6 @@ class Universalpay extends PaymentModule
             $paysystem->description_success);
     }
 
-    public function hookdisplayPayment($params)
-    {
-        if (!$this->active) {
-            return;
-        }
-        if (!$this->checkCurrency($params['cart'])) {
-            return;
-        }
-
-        $virtual = $this->context->cart->isVirtualCart();
-        $paysystems = $this->getPaySystems($params);
-        foreach ($paysystems as $key => $paysystem)
-        {
-            if (($paysystem['cart_type'] == UniPaySystem::CART_REAL) && $virtual)
-                unset($paysystems[$key]);
-            elseif (($paysystem['cart_type'] == UniPaySystem::CART_VIRTUAL) && !$virtual)
-                unset($paysystems[$key]);
-        }
-        $this->smarty->assign(array(
-            'this_path' => $this->_path,
-            'this_path_ssl' => Tools::getShopDomainSsl(true, true) . __PS_BASE_URI__ . 'modules/' . $this->name . '/',
-            'universalpay' => $paysystems,
-            'universalpay_onepage' => Configuration::get('universalpay_onepage'),
-        ));
-        return $this->display(__FILE__, 'payment.tpl');
-    }
-
     public function getPaySystems($params)
     {
         if ($this->paysystems) {
@@ -288,10 +264,10 @@ class Universalpay extends PaymentModule
         foreach ($paysystems as $paysystem) {
             $po = new PaymentOption();
             $po->setCallToActionText($paysystem['name'])
-                ->setAction($this->context->link->getModuleLink($this->name, 'payment',
+                ->setAction($this->context->link->getModuleLink($this->name, 'validation',
                     array('id_universalpay_system' => $paysystem['id_universalpay_system']), true))
                 ->setLogo(Media::getMediaPath(_PS_IMG_ . 'pay/' . $paysystem['id_universalpay_system'] . '.jpg'))
-                ->setAdditionalInformation($paysystem['description_short'])
+                ->setAdditionalInformation($this->getAdditionalInformationTemplate($paysystem['description_short']))
                 ->setModuleName($this->name);
             $options[] = $po;
         }
@@ -319,6 +295,13 @@ class Universalpay extends PaymentModule
         $output .= $this->postProcess();
         $output .= $this->renderSettingsForm();
         return $output;
+    }
+
+    private function getAdditionalInformationTemplate($description_short) {
+        $this->context->smarty->assign([
+            'description_short' => $description_short,
+        ]);
+        return $this->context->smarty->fetch('module:universalpay/views/templates/front/payment_info.tpl');
     }
 
     private function initToolbar()
