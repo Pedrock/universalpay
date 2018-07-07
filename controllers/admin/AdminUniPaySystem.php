@@ -19,6 +19,7 @@ class AdminUniPaySystemController extends ModuleAdminController
         $this->table = 'universalpay_system';
         $this->className = 'UniPaySystem';
         $this->lang = true;
+        $this->translator = Context::getContext()->getTranslator();
 
         $this->addRowAction('edit');
         $this->addRowAction('delete');
